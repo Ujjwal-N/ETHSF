@@ -42,7 +42,6 @@ async function signData(ach) {
   const topLevelHash = Poseidon.hash(subKeys);
   outputString += 'Top Level Hash: ' + topLevelHash;
 
-  console.log('here2');
   const signature = Signature.create(privateKey, [Field(ach), topLevelHash]);
 
   return {
@@ -54,7 +53,6 @@ async function signData(ach) {
 }
 
 router.get('/ach/:ach', async (ctx) => {
-  console.log('here');
   let signedData = await signData(ctx.params.ach);
   ctx.body =
     'Signature(r,s):' +
@@ -66,6 +64,12 @@ router.get('/ach/:ach', async (ctx) => {
     '\n' +
     signedData.display;
 });
+
+
+router.get('/', async (ctx) => {
+  ctx.body = "Welcome!"
+});
+
 
 app.use(router.routes()).use(router.allowedMethods());
 
