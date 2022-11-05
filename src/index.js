@@ -71,7 +71,7 @@ router.get('/ach-api/:ach', async (ctx) => {
 
 
 router.get('/', async (ctx) => {
-  ctx.body = "Welcome!"
+  ctx.body = "Hello!"
 });
 
 
