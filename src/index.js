@@ -69,9 +69,8 @@ router.get('/ach-api/:ach', async (ctx) => {
   ctx.body = await signData(ctx.params.ach);
 });
 
-
 router.get('/', async (ctx) => {
-  ctx.body = "Welcome!"
+  ctx.body = "Hello!"
 });
 
 
