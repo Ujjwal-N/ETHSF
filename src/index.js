@@ -31,7 +31,7 @@ async function signData(ach) {
     const curKey = Poseidon.hash(privKeyFields);
 
     subKeys.push(curKey);
-    outputString += curKey + '\n';
+    outputString += curKey.toBigInt() + '\n';
 
     // const curSig = Signature.create(privateKey, [Field(i), curKey]);
     // subSignatures.push(curSig);
@@ -45,7 +45,7 @@ async function signData(ach) {
   const signature = Signature.create(privateKey, [Field(ach), topLevelHash]);
 
   return {
-    data: { ach: ach, topLevelHash: topLevelHash },
+    data: { ach: ach.toBigInt(), topLevelHash: topLevelHash.toBigInt() },
     signature: signature,
     publicKey: publicKey,
     display: outputString,
